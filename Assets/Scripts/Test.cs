@@ -18,8 +18,9 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Timer.;
+        timer += Time.deltaTime;
         n++;
+        Debug.Log(Time.deltaTime);
 
             if (timer >= 1f)
         {
