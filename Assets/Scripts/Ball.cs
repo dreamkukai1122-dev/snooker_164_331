@@ -22,6 +22,7 @@ public class Ball : MonoBehaviour, IPointerClickHandler
 
     [SerializeField]
     private BallColor color;
+    public BallColor Color { get { return color; } }
 
     [SerializeField]
     private MeshRenderer rd;
@@ -56,29 +57,28 @@ public class Ball : MonoBehaviour, IPointerClickHandler
         {
             case BallColor.white:
                 point = 0;
-                rd.material.color = Color.white; break;
+                rd.material.color = new Color32(255, 255, 255, 255); break;
             case BallColor.red:
                 point = 1;
-                rd.material.color = Color.red; break;
+                rd.material.color = new Color32(255, 42, 42, 255); break;
             case BallColor.yellow:
                 point = 2;
-                rd.material.color = Color.yellow; break;
+                rd.material.color = new Color32(255, 212, 44, 255); break;
             case BallColor.green:
                 point = 3;
-                rd.material.color = Color.green; break;
+                rd.material.color = new Color32(17, 95, 34, 255); break;
             case BallColor.brown:
                 point = 4;
-                rd.material.color = Color.brown; break;
+                rd.material.color = new Color32(91, 47, 3, 255); break;
             case BallColor.blue:
                 point = 5;
-                rd.material.color = Color.blue; break;
+                rd.material.color = new Color32(0, 176, 255, 255); break;
             case BallColor.pink:
                 point = 6;
-                rd.material.color = Color.pink; break;
+                rd.material.color = new Color32(255, 152, 242, 255); break;
             case BallColor.black:
                 point = 7;
-                rd.material.color = Color.black; break;
+                rd.material.color = new Color32(0, 0, 0, 255); break;
         }
     }
-
 }
