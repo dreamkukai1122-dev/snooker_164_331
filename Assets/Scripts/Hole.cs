@@ -9,6 +9,7 @@ public class Hole : MonoBehaviour
         if (b != null)
         {
             gameMeneger.Instance.PlayerScore += b.Point;
+            Destroy(b.gameObject);
         }
     }
 }
