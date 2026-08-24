@@ -26,6 +26,8 @@ public class gameMeneger : MonoBehaviour
     [SerializeField]
     private TMP_Text notitext;
 
+
+
     public static gameMeneger Instance;
 
     void Awake()
@@ -42,6 +44,9 @@ public class gameMeneger : MonoBehaviour
         SetBall(BallColor.blue, 5);
         SetBall(BallColor.pink, 6);
         SetBall(BallColor.black, 7);
+
+        if (Settings.fromSave)
+            LoadGame();
     }
 
     // Update is called once per frame
@@ -61,6 +66,9 @@ public class gameMeneger : MonoBehaviour
 
        if (Keyboard.current.backspaceKey.wasPressedThisFrame)
             StopBall();
+
+       if (Keyboard.current.leftShiftKey.isPressed && Keyboard.current.sKey.wasPressedThisFrame)
+            SaveGame();
 
     }
     private void SetBall(BallColor col, int i)
@@ -107,5 +115,35 @@ public class gameMeneger : MonoBehaviour
     {
         notitext.text = s;
 
+    }
+
+    public void SaveGame()
+    {
+        StopBall();
+
+        if (cueBall != null)
+        {
+            PlayerPrefs.SetFloat("cueBallPosX", cueBall.transform.position.x);
+            PlayerPrefs.SetFloat("cueBallPosY", cueBall.transform.position.y);
+            PlayerPrefs.SetFloat("cueBallPosZ", cueBall.transform.position.z);
+            Debug.Log("Game Saved");
+        }
+    }
+
+    public void LoadGame()
+    {
+        StopBall();
+
+        if (cueBall != null)
+        {
+
+            float x = PlayerPrefs.GetFloat("cueBallPosX");
+            float y = PlayerPrefs.GetFloat("cueBallPosY");
+            float z = PlayerPrefs.GetFloat("cueBallPosZ");
+
+            cueBall.transform.position = new Vector3(x, y, z);
+            
+            Debug.Log("Game Loaded");
+        }
     }
 }
