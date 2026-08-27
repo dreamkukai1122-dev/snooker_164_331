@@ -6,6 +6,7 @@ public class MainMunu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Startgame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Load");
     }
 
@@ -17,5 +18,10 @@ public class MainMunu : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void Reset()
+    {   
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

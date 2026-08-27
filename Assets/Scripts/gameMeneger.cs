@@ -26,6 +26,8 @@ public class gameMeneger : MonoBehaviour
     [SerializeField]
     private TMP_Text notitext;
 
+    [SerializeField]
+    private GameObject resetbutton ;
 
 
     public static gameMeneger Instance;
@@ -36,7 +38,8 @@ public class gameMeneger : MonoBehaviour
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {   
+        resetbutton.SetActive(false);
         SetBall(BallColor.red, 1);
         SetBall(BallColor.yellow, 2);
         SetBall(BallColor.green, 3);
@@ -67,9 +70,7 @@ public class gameMeneger : MonoBehaviour
        if (Keyboard.current.backspaceKey.wasPressedThisFrame)
             StopBall();
 
-       if (Keyboard.current.leftShiftKey.isPressed && Keyboard.current.sKey.wasPressedThisFrame)
-            SaveGame();
-
+ 
     }
     private void SetBall(BallColor col, int i)
     {
@@ -114,7 +115,6 @@ public class gameMeneger : MonoBehaviour
     public void ShowString(string s)
     {
         notitext.text = s;
-
     }
 
     public void SaveGame()
@@ -145,6 +145,11 @@ public class gameMeneger : MonoBehaviour
 
             Debug.Log("Game Loaded");
         }
+    }
+
+    public void showreset()
+    {
+        resetbutton.SetActive(true);
     }
 }
 

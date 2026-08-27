@@ -12,6 +12,7 @@ public class Hole : MonoBehaviour
             {
                 gameMeneger.Instance.ShowString($"White Ball drop!!!\nYou lose!!!");
                 Time.timeScale = 0f;
+                gameMeneger.Instance.showreset();
 
             }
             else
