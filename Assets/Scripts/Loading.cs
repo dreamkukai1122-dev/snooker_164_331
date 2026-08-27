@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class Loading : MonoBehaviour
 {
     [SerializeField]
-    private Slider slider;
-
+    private Slider Slider;
 
     [SerializeField]
-    private float waitSeconds = 1f;
+    private float waiSeconds = 2f;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,18 +22,17 @@ public class Loading : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (waitSeconds > 0f)
-            waitSeconds -= Time.deltaTime;
+        if (waiSeconds > 0f)
+            waiSeconds -= Time.deltaTime;
         else
-            StartCoroutine(LoadnewScene());
+            StartCoroutine(LoadNewScene());
     }
-
-    private IEnumerator LoadnewScene()
+    private IEnumerator LoadNewScene()
     {
         AsyncOperation oper = SceneManager.LoadSceneAsync("Scene01");
-        while (!oper.isDone)
+        while (oper.isDone)
         {
-            slider.value = oper.progress / 0.9f;
+            Slider.value = oper.progress / 0.9f;
             yield return null;
         }
     }

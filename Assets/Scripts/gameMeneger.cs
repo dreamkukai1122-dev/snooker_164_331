@@ -142,8 +142,9 @@ public class gameMeneger : MonoBehaviour
             float z = PlayerPrefs.GetFloat("cueBallPosZ");
 
             cueBall.transform.position = new Vector3(x, y, z);
-            
+
             Debug.Log("Game Loaded");
         }
     }
 }
+
